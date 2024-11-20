@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audio Analysis</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Audio Analysis Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <header>
+        Audio Analysis Tool
+    </header>
     <div class="container">
-        <h1>Audio Signal Analysis Tool</h1>
-        <form action="{{ url_for('analyze') }}" method="post" enctype="multipart/form-data">
-            <label for="audio_file">Upload Audio File (WAV format only):</label>
+        <h2>Upload an Audio File</h2>
+        <form action="/analyze" method="POST" enctype="multipart/form-data">
+            <label for="audio_file">Select Audio File:</label>
             <input type="file" id="audio_file" name="audio_file" required>
 
             <label for="analysis_type">Select Analysis Type:</label>
             <select id="analysis_type" name="analysis_type" required>
-                <option value="FFT">FFT</option>
-                <option value="DFT">DFT</option>
+                <option value="FFT">FFT (Fast Fourier Transform)</option>
+                <option value="DFT">DFT (Discrete Fourier Transform)</option>
+                <option value="STFT">STFT (Short-Time Fourier Transform)</option>
+                <option value="LPF">Low Pass Filter</option>
+                <option value="HPF">High Pass Filter</option>
+                <option value="BPF">Band Pass Filter</option>
             </select>
 
             <button type="submit">Analyze</button>
